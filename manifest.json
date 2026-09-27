@@ -1,0 +1,8 @@
+{
+	"id": "remarkable",
+	"name": "reMarkable",
+	"version": "1.0.0",
+	"minAppVersion": "0.1.0",
+	"description": "Tient à jour dans le vault un PDF de chaque document d'une reMarkable branchée en USB.",
+	"author": "Philippine Biojout"
+}

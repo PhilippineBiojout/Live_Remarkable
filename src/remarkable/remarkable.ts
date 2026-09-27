@@ -16,7 +16,7 @@ declare module '@usefragment/core' {
 	}
 }
 
-/** Ce que reMarkable garde dans `remarkable.json`, à côté du data.json de Hone. */
+/** Ce que reMarkable garde dans `remarkable.json`, dans le dossier du plugin. */
 interface Donnees {
 	/** Adresse de la tablette ; un faux serveur pour tester sans elle. */
 	hote: string;

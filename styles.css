@@ -1,0 +1,133 @@
+/* ---------- reMarkable (src/remarkable/) ---------- */
+
+/* La demande d'autorisation (et le rappel quand on a refusé). */
+
+.remarkable-boutons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.remarkable-boutons button {
+	padding: 4px 14px;
+	border-radius: 6px;
+	border: 1px solid var(--tab-outline-color);
+	font-size: 13px;
+}
+
+.remarkable-boutons .mod-cta {
+	background: var(--color-accent);
+	border-color: var(--color-accent);
+	color: #fff;
+}
+
+.remarkable-demande .remarkable-refus {
+	margin-bottom: 8px;
+	color: var(--text-muted);
+}
+
+/* Le statut dans la barre d'état du cœur, sous le verre de la toolbar
+   (mêmes valeurs que la lentille du plugin verre). */
+
+.status-bar-item.remarkable-statut {
+	--toolbar-glass-teinte: rgba(255, 255, 255, 0.06);
+	--toolbar-glass-reflet: rgba(255, 255, 255, 0.42);
+	--toolbar-glass-arete: rgba(255, 255, 255, 0.14);
+	--toolbar-glass-creux: rgba(0, 0, 0, 0.35);
+	--toolbar-glass-ombre: rgba(0, 0, 0, 0.35);
+	height: 16px;
+	margin: 0 2px;
+	padding: 0 8px;
+	border-radius: 8px;
+	background: var(--toolbar-glass-teinte);
+	backdrop-filter: blur(0.4px) saturate(1.5) brightness(1.08);
+	box-shadow:
+		inset 0 1px 0.5px var(--toolbar-glass-reflet),
+		inset 0 0 0 0.5px var(--toolbar-glass-arete),
+		inset 0 -1px 1px var(--toolbar-glass-creux),
+		0 2px 6px var(--toolbar-glass-ombre);
+	cursor: pointer;
+}
+
+/* Un item caché (le statut hors PDF de la tablette, « Fragment <version> »)
+   ne s'affiche pas, et une barre sans item visible disparaît en entier. */
+.status-bar-item[hidden] {
+	display: none;
+}
+
+.status-bar:not(:has(> .status-bar-item:not([hidden]))) {
+	display: none;
+}
+
+.status-bar-item.remarkable-statut[data-etat="live"] {
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
+@media (prefers-color-scheme: light) {
+	.status-bar-item.remarkable-statut {
+		--toolbar-glass-teinte: rgba(255, 255, 255, 0.1);
+		--toolbar-glass-reflet: rgba(255, 255, 255, 0.95);
+		--toolbar-glass-arete: rgba(0, 0, 0, 0.08);
+		--toolbar-glass-creux: rgba(0, 0, 0, 0.12);
+		--toolbar-glass-ombre: rgba(0, 0, 0, 0.16);
+	}
+}
+
+.remarkable-bulle {
+	min-width: 0;
+	border-radius: 12px;
+	max-width: 260px;
+	padding: 10px 12px;
+	user-select: text;
+	line-height: 1.4;
+}
+
+.remarkable-bulle p {
+	margin: 0;
+}
+
+.remarkable-bulle strong + p {
+	margin-top: 4px;
+}
+
+/* La demande sort de l'icône du ruban (src/eclosion.ts) et s'ouvre à côté :
+   pas de voile, pas de croix (Échap ou un clic à côté ferment). Sur le modèle
+   du QR code du scan, dans le plugin agent. */
+
+.remarkable-demande {
+	display: block;
+}
+
+.remarkable-demande .modal-bg {
+	background: transparent;
+}
+
+.remarkable-demande .modal {
+	position: absolute;
+	width: 320px;
+	padding: 16px 18px;
+	border-radius: 12px;
+}
+
+.remarkable-demande .modal-close-button {
+	display: none;
+}
+
+.remarkable-demande .modal-content p {
+	margin: 0;
+}
+
+.remarkable-eclosion {
+	position: absolute;
+	/* Sous le menu (1000) : la goutte de la bulle passe devant les vues. */
+	z-index: 999;
+	pointer-events: none;
+}
+
+.remarkable-eclosion-forme {
+	position: absolute;
+	background: var(--tab-outline-color);
+}
+

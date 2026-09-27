@@ -23,7 +23,7 @@ Même structure que
 
 ## Prérequis
 
-Sur la tablette : Réglages → Stockage → **interface web USB** activée. Le plugin
+Sur la tablette : Paramètres > Stockage > **Interface web USB** activée. Le plugin
 interroge `http://10.11.99.1`. Ses réglages sont dans `remarkable.json`, dans
 le dossier du plugin.
 
